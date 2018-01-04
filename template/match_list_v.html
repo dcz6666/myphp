@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>球队一</th>
+			<th>比分</th>
+			<th>球队二</th>
+			<th>时间</th>
+		</tr>
+		<?php foreach($match_list as $row):?>
+		<tr>
+			<td><?php echo $row['t1_name'];?></td>
+			<td><?php echo $row['t1_score'];?>:<?php echo $row['t2_score'];?></td>
+			<td><?php echo $row['t2_name'];?></td>
+			<td><?php echo date('Y-m-d H:i:s',$row['m_time']);?></td>
+		</tr>
+	    <?php endforeach;?>
+	</table>
+</body>
+</html>
