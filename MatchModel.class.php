@@ -1,11 +1,12 @@
 <?php 
   /**
-   *match表的操作模型类
+   * match表的操作模型类
    */
-   class MatchModel{
+  require_once './Model.class.php';
+   class MatchModel extends Model{
    	// 获得所有的比赛列表
    	public function getList(){
-   			$config=array(
+   		$config=array(
 			 'host'=>'127.0.0.1',
 			 'port'=>'3306',
 			 'username'=>'root',
