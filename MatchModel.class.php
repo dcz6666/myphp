@@ -5,7 +5,7 @@
    class MatchModel{
    	// 获得所有的比赛列表
    	publi function getList(){
-   		
+   		add 
    	}
    }
  ?>
