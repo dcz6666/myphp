@@ -3,6 +3,7 @@
   * 基础模型类
   */
   class Model{
+  	protected $_dao;//存储DAO对象的属性，可以在子类方法中被访问，使用DAO对象
   	/**
   	*初始化DAO
   	*/
@@ -15,8 +16,11 @@
 			 'charset'=>'utf8',
 			 'dbname'=>'php34',
 			);
-   	   require 'MySQL.class.php';
-			$dao=MySQLDB::getInstance($config);
+	    require_once './MySQL.class.php';
+		$this->_dao=MySQLDB::getInstance($config);
+  	}
+  	public function __construct(){
+  		$this->_initDAO();
   	}
   }
  ?>
