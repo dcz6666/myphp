@@ -4,9 +4,7 @@
   */
   class Model{
   	protected $_dao;//存储DAO对象的属性，可以在子类方法中被访问，使用DAO对象
-  	/**
-  	*初始化DAO
-  	*/
+  	// 初始化DAO
   	protected function _initDAO(){
   			$config=array(
 			 'host'=>'127.0.0.1',
@@ -19,7 +17,11 @@
 	    require_once './MySQL.class.php';
 		$this->_dao=MySQLDB::getInstance($config);
   	}
+  	/**
+  	*构造方法
+  	*/
   	public function __construct(){
+  		// 初始化DAO
   		$this->_initDAO();
   	}
   }
