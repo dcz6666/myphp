@@ -14,10 +14,11 @@
 		</tr>
 		<?php foreach($match_list as $row):?>
 		<tr>
-			<td><?php echo $row['t1_name'];?></td>
+			<td><a href="index.php?c=Team&a=info&id=Tid"><?php echo $row['t1_name'];?></a></td>
 			<td><?php echo $row['t1_score'];?>:<?php echo $row['t2_score'];?></td>
 			<td><?php echo $row['t2_name'];?></td>
 			<td><?php echo date('Y-m-d H:i:s',$row['m_time']);?></td>
+			<td><a href="index.php?c=Match&a=remove&id=N">删除</a></td>
 		</tr>
 	    <?php endforeach;?>
 	</table>

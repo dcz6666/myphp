@@ -14,12 +14,9 @@ class MySQLDB{
 	public $password;
 	public $charset;
 	public $dbname;
-
 	//连接结果（资源）
 	private static $link;
-
 	private $resourc;
-
 	public static function getInstance($config){
 		if(!isset(self::$link)){
 			self::$link = new self($config);
@@ -36,7 +33,6 @@ class MySQLDB{
 		$this->password = isset($config['password']) ? $config['password'] : '';
 		$this->charset = isset($config['charset']) ? $config['charset'] : 'utf8';
 		$this->dbname = isset($config['dbname']) ? $config['dbname'] : '';
-
 		//连接数据库
 		$this->connect();
 		//设定连接编码
@@ -58,7 +54,6 @@ class MySQLDB{
 		//mysql_select_db($dbname, $this->resourc);
 		$this->query("use $dbname;") ;
 	}
-
 	/**
 	 * 功能：执行最基本（任何）sql语句
 	 * 返回：如果失败直接结束，如果成功，返回执行结果
@@ -106,8 +101,6 @@ class MySQLDB{
 			return false;
 		}
 		return $rec[0];	//该数组的第一项。
-
 	}
-
 }
 
