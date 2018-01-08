@@ -14,7 +14,6 @@
         //判断当前模型是否已经实例化
         if(!isset($model_list[$model_name])){
         // 没有实例化过
-          require './application/'.PLAFORM.'/model/'.$model_name.'.class.php';
           $model_list[$model_name]= new $model_name;//可变标识符，可变类
         }
         return $model_list[$model_name];

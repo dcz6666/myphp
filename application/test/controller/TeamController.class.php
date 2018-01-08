@@ -2,7 +2,6 @@
 /**
  *球队相关操作控制器
  */
-require '../framework/Controller.class.php';
 class TeamController extends Controller{
 	/**
 	 * 查看详细信息

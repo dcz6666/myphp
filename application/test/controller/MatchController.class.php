@@ -3,7 +3,6 @@
 /**
  * 比赛相关控制器功能
  */
-require './framework/Controller.class.php';
 class MatchController extends Controller{
 	public function listAction(){
 		// header("Content-Type:text/html; charset=utf-8");
@@ -12,7 +11,6 @@ class MatchController extends Controller{
 		//  $m_match=new MatchModel();
 		//  通过工厂获得对象
 
-		require './framework/Factory.class.php';
 		$m_match=Factory::M('matchModel');
 
 		$match_list=$m_match->getList();

@@ -18,13 +18,23 @@ function userAutoload($class_name){
   	 require $framework_class_list[$class_name];
   }
   //判断是否为可增加（控制器类，模型类）
-  //控制器类
+  //控制器类,截取后十个字符,匹配Controller
+  elseif(substr($class_name,-10)=='Controller'){
+      //控制器类，当前平台下controller目录
+    require './application/'.PLATFORM.'/controller/'.$class_name.'.class.php';
+  }
+  // 模型类，截取后5个字符，匹配model
+  elseif(substr($class_name,-5)=='Model'){
+    // 模型类，当前平台下model目录
+    require './application/'.PLATFORM.'/model/'.$class_name.'.class.php';
+  }
+
  
 }
-sql_autoload_register(userAutoload);
+spl_autoload_register('userAutoload');
 //确地分发参数
 //平台
-$default platform='test';
+$default_platform='test';
 define('PLATFORM',isset($_GET['p'])?$_GET['p']:$default_platform);
 //控制器类
 $default_controller='Match';
@@ -34,7 +44,6 @@ $default_action='list';
 define('ACTION',isset($_GET['a'])?$_GET['a']:$default_action);
 //实例化控制器类,并调用方法
 $controller_name=CONTROLLER.'Controller';
-require './application/'.PLATFORM.'/controller/'.$controller_name.'.class.php';
 //实例化
 $controller=new $controller_name();
 //调用方法（action动作）
