@@ -40,13 +40,13 @@ define('FRAMEWORK_PATH', ROOT_PATH . 'framework/');
 
 // 确定分发参数
 // 平台
-$default_platform = 'test';
+$default_platform = 'back';
 define('PLATFORM', isset($_GET['p']) ? $_GET['p'] : $default_platform);
 // 控制器类
-$default_controller = 'Match';
+$default_controller = 'Manage';
 define('CONTROLLER', isset($_GET['c']) ? $_GET['c'] : $default_controller);
 // 动作
-$default_action = 'list';
+$default_action = 'index';
 define('ACTION', isset($_GET['a']) ? $_GET['a'] : $default_action);
 
 //当前平台相关的路径常量

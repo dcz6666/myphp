@@ -17,10 +17,14 @@
   		 $m_admin=Factory::M('AdminModel');
   		 if($m_admin->check($admin_name,$admin_pass)){
   		 	//通过验证，合法
-  		 	echo '合法直接跳转到后台首页';
+  		 	// echo '合法直接跳转到后台首页';
+        //设置登录标志
+        $GLOBALS['is_login']='yes';
+        $this->_jump('index.php?p=back&c=Manage&a=index');
   		 }else{
   		 	//非法
-  		 	echo "非法，提示跳转到后台登录页面index.php?=back&c=Admin&a=login";
+  		 	// echo "非法，提示跳转到后台登录页面index.php?=back&c=Admin&a=login";
+         $this->_jump('index.php?p=back&c=Admin&a=login','管理员信息非法');
   		 }
   	}
   }
