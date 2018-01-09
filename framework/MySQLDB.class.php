@@ -14,9 +14,12 @@ class MySQLDB{
 	public $password;
 	public $charset;
 	public $dbname;
+
 	//连接结果（资源）
 	private static $link;
+
 	private $resourc;
+
 	public static function getInstance($config){
 		if(!isset(self::$link)){
 			self::$link = new self($config);
@@ -33,6 +36,7 @@ class MySQLDB{
 		$this->password = isset($config['password']) ? $config['password'] : '';
 		$this->charset = isset($config['charset']) ? $config['charset'] : 'utf8';
 		$this->dbname = isset($config['dbname']) ? $config['dbname'] : '';
+
 		//连接数据库
 		$this->connect();
 		//设定连接编码
@@ -47,13 +51,12 @@ class MySQLDB{
 		$this->resourc = mysql_connect("$this->host:$this->port", "$this->username","$this->password") or die("连接数据库失败！");
 	}
 	public function setCharset($charset){
-		//mysql_set_charset($charset, $this->resourc); 
-		$this->query("set names $charset");
+		mysql_set_charset($charset, $this->resourc); 
 	}
 	public function selectDb($dbname){
-		//mysql_select_db($dbname, $this->resourc);
-		$this->query("use $dbname;") ;
+		mysql_select_db($dbname, $this->resourc);
 	}
+
 	/**
 	 * 功能：执行最基本（任何）sql语句
 	 * 返回：如果失败直接结束，如果成功，返回执行结果
@@ -97,10 +100,10 @@ class MySQLDB{
 		$result = $this->query($sql);
 		$rec = mysql_fetch_row($result);//返回下标为数字的数组,且下标一定是0,1,2, 3.....
 										//如果没有数据，返回false
-		if($rec === false){
+		if($result === false){
 			return false;
 		}
 		return $rec[0];	//该数组的第一项。
+
 	}
 }
-
